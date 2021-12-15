@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/ui/widgets/custom_button.dart';
+import 'package:flutter_airplane/ui/widgets/custom_text_form_field.dart';
 import '../../shared/theme.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -22,52 +23,16 @@ class SignUpPage extends StatelessWidget {
     Widget inputSection(){
 
       Widget nameInput() {
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Full Name'),
-              SizedBox(height: 6),
-              TextFormField(
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  hintText: "Your full name",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18) 
-                  ),
-                  focusedBorder:  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: kPrimaryColor)
-                  ),
-                ),
-              )
-            ],),
+        return CustomTextFormField(
+          title: 'Full Name', 
+          hintText: 'Your full name',
         );
       }
 
       Widget emailInput() {
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Email Address'),
-              SizedBox(height: 6),
-              TextFormField(
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  hintText: "Your email address",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18) 
-                  ),
-                  focusedBorder:  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: kPrimaryColor)
-                  ),
-                ),
-              )
-            ],),
+        return CustomTextFormField(
+          title: 'Email Address',
+          hintText: 'Your email address',
         );
       }
 
