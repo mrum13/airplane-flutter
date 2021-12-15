@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_airplane/ui/widgets/custom_button.dart';
 import '../../shared/theme.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -122,27 +123,11 @@ class SignUpPage extends StatelessWidget {
       }
 
       Widget submitButton(){
-        return Container(
-          width: double.infinity,
-          height: 55,
-          child: TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/bonus');
-            },
-            style : TextButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18)
-              )
-            ),
-            child: Text('Get Started',
-              style: whiteTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: medium,
-              ),),
-          ),
-          
-        );
+        return CustomButton(
+          title: 'Get Startded', 
+          onPressed: () {
+            Navigator.pushNamed(context, '/bonus');
+          });
       }
 
       return Container(
