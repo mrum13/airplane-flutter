@@ -37,53 +37,17 @@ class SignUpPage extends StatelessWidget {
       }
 
       Widget passwordInput() {
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Password'),
-              SizedBox(height: 6),
-              TextFormField(
-                obscureText: true,
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  hintText: "Your password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18) 
-                  ),
-                  focusedBorder:  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: kPrimaryColor)
-                  ),
-                ),
-              )
-            ],),
+        return CustomTextFormField(
+          title: 'Password', 
+          hintText: 'Your password',
+          obscureText: true,
         );
       }
 
       Widget hobbyInput() {
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Hobby'),
-              SizedBox(height: 6),
-              TextFormField(
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  hintText: "Your hobby",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18) 
-                  ),
-                  focusedBorder:  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: kPrimaryColor)
-                  ),
-                ),
-              )
-            ],),
+        return CustomTextFormField(
+          title: 'Hobby', 
+          hintText: 'Your hobby'
         );
       }
 
