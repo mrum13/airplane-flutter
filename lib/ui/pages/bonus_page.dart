@@ -39,7 +39,7 @@ class BonusPage extends StatelessWidget {
                           fontWeight: light
                         ),
                       ),
-                      Text('Kezia Anne',
+                      Text('Kezia Anne Kezia Anne Kezia Anne',
                         style: whiteTextStyle.copyWith(
                           fontSize: 20,
                           fontWeight: medium
