@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
 import 'package:flutter_airplane/ui/widgets/destination_card.dart';
+import 'package:flutter_airplane/ui/widgets/destination_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({ Key? key }) : super(key: key);
@@ -92,10 +93,29 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget newDestinations(){
+      return Container(
+        margin: EdgeInsets.only(top: 30, left: 24, right: 24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('New This Year', 
+              style: blackTextStyle.copyWith(
+                fontSize: 18,
+                fontWeight: semiBold,
+              ),
+            ),
+            DestinationTile()
+          ],
+        ),
+      );
+    } 
+
     return ListView(
       children: [
         header(),
         popularDestinations(),
+        newDestinations(),
       ],
     );
   }
