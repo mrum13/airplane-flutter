@@ -55,6 +55,8 @@ class DetailPage extends StatelessWidget {
                 )
               ),
             ),
+            
+            // NOTE: title
             Container(
               margin: EdgeInsets.only(top: 256),
               child: Row(
@@ -101,6 +103,37 @@ class DetailPage extends StatelessWidget {
                 ],
               ),
                 ]),
+            ),
+
+            //NOTE: Descripstion
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(top:30),
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 30,
+              ),
+              decoration: BoxDecoration(
+                color: kWhiteColor,
+                borderRadius: BorderRadius.circular(18)
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'About',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold
+                    ),
+                  ),
+                  SizedBox(height: 6,),
+                  Text('Berada dijalur jalan provinsi yang menghubungkan Denapasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
+                    style: blackTextStyle.copyWith(
+                      height: 2.6
+                    ),)
+                ],
+              ),
             )
           ]),
       );
