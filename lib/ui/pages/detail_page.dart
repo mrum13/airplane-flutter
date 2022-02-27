@@ -1,87 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
+import 'package:flutter_airplane/ui/widgets/interest_item.dart';
 import 'package:flutter_airplane/ui/widgets/photo_item.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({ Key? key }) : super(key: key);
+  const DetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     Widget backgroundImage() {
       return Container(
         width: double.infinity,
         height: 450,
         decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              'assets/image_destination1.png'
-            ))
-        ),
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/image_destination1.png'))),
       );
     }
 
     Widget customShadow() {
       return Container(
-        width: double.infinity,
-        height: 214,
-        margin: EdgeInsets.only(top: 236),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              kWhiteColor.withOpacity(0),
-              Colors.black.withOpacity(0.95)
-            ]
-          )
-        )
-      );
+          width: double.infinity,
+          height: 214,
+          margin: EdgeInsets.only(top: 236),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                kWhiteColor.withOpacity(0),
+                Colors.black.withOpacity(0.95)
+              ])));
     }
 
     Widget content() {
       return Container(
         width: double.infinity,
-        margin: EdgeInsets.only(top: 30, left: 24, right:24),
-        child: Column(
-          children: [
-            Container(
-              width: 108,
-              height: 24,
-              decoration: BoxDecoration(
+        margin: EdgeInsets.only(top: 30, left: 24, right: 24),
+        child: Column(children: [
+          Container(
+            width: 108,
+            height: 24,
+            decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/icon_emblem.png',
-                ),
-                )
+              image: AssetImage(
+                'assets/icon_emblem.png',
               ),
-            ),
-            
-            // NOTE: title
-            Container(
-              margin: EdgeInsets.only(top: 256),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Lake Ciliwung', 
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 24,
-                            fontWeight: semiBold
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text('Tanggerang',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: light
-                          ),)
-                      ],
+            )),
+          ),
+
+          // NOTE: title
+          Container(
+            margin: EdgeInsets.only(top: 256),
+            child: Row(children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Lake Ciliwung',
+                      style: whiteTextStyle.copyWith(
+                          fontSize: 24, fontWeight: semiBold),
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  Row(
+                    Text(
+                      'Tanggerang',
+                      style: whiteTextStyle.copyWith(
+                          fontSize: 16, fontWeight: light),
+                    )
+                  ],
+                ),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -103,57 +94,98 @@ class DetailPage extends StatelessWidget {
                   )
                 ],
               ),
-                ]),
+            ]),
+          ),
+
+          //NOTE: Descripstion
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 30),
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 30,
             ),
+            decoration: BoxDecoration(
+                color: kWhiteColor, borderRadius: BorderRadius.circular(18)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'About',
+                  style: blackTextStyle.copyWith(
+                      fontSize: 16, fontWeight: semiBold),
+                ),
+                SizedBox(
+                  height: 6,
+                ),
+                Text(
+                  'Berada dijalur jalan provinsi yang menghubungkan Denapasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
+                  style: blackTextStyle.copyWith(height: 2),
+                ),
 
-            //NOTE: Descripstion
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(top:30),
-              padding: EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 30,
-              ),
-              decoration: BoxDecoration(
-                color: kWhiteColor,
-                borderRadius: BorderRadius.circular(18)
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'About',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: semiBold
-                    ),
+                //NOTE: Photos
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Photos',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: semiBold,
                   ),
-                  SizedBox(height: 6,),
-                  Text('Berada dijalur jalan provinsi yang menghubungkan Denapasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
-                    style: blackTextStyle.copyWith(
-                      height: 2
+                ),
+                SizedBox(
+                  height: 6,
+                ),
+                Row(
+                  children: [
+                    PhotoItem(
+                      imageUrl: 'assets/image_photo1.png',
                     ),
-                  ),
+                    PhotoItem(
+                      imageUrl: 'assets/image_photo2.png',
+                    ),
+                    PhotoItem(
+                      imageUrl: 'assets/image_photo3.png',
+                    ),
+                  ],
+                ),
 
-                  //NOTE: Photos
-                  SizedBox(height: 20,),
-                  Text('Photos',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: semiBold,
-                    ),
+                //Note: Interest
+                SizedBox(height: 20,),
+                Text(
+                  'Interests',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: semiBold,
                   ),
-                  SizedBox(height: 6,),
-                  Row(children: [
-                    PhotoItem(imageUrl: 'assets/image_photo1.png',),
-                    PhotoItem(imageUrl: 'assets/image_photo2.png',),
-                    PhotoItem(imageUrl: 'assets/image_photo3.png',),
-                  ],)
-                ],
-              ),
+                ),
+                SizedBox(height: 6),
+                Row(
+                  children: [
+                    InterestItem(
+                      text: 'Kids Park',
+                    ),
+                    InterestItem(
+                      text: 'Honor Bridge',
+                    )
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Row(
+                  children: [
+                    InterestItem(
+                      text: 'City Museum',
+                    ),
+                    InterestItem(
+                      text: 'Central Mall',
+                    )
+                  ],
+                ),
+              ],
             ),
-
-          ]),
+          ),
+        ]),
       );
     }
 
@@ -162,11 +194,7 @@ class DetailPage extends StatelessWidget {
       body: ListView(
         children: [
           Stack(
-            children: [
-              backgroundImage(),
-              customShadow(),
-              content()
-            ],
+            children: [backgroundImage(), customShadow(), content()],
           ),
         ],
       ),
