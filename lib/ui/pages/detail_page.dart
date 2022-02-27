@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
+import 'package:flutter_airplane/ui/widgets/photo_item.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({ Key? key }) : super(key: key);
@@ -130,22 +131,43 @@ class DetailPage extends StatelessWidget {
                   SizedBox(height: 6,),
                   Text('Berada dijalur jalan provinsi yang menghubungkan Denapasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
                     style: blackTextStyle.copyWith(
-                      height: 2.6
-                    ),)
+                      height: 2
+                    ),
+                  ),
+
+                  //NOTE: Photos
+                  SizedBox(height: 20,),
+                  Text('Photos',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  SizedBox(height: 6,),
+                  Row(children: [
+                    PhotoItem(imageUrl: 'assets/image_photo1.png',),
+                    PhotoItem(imageUrl: 'assets/image_photo2.png',),
+                    PhotoItem(imageUrl: 'assets/image_photo3.png',),
+                  ],)
                 ],
               ),
-            )
+            ),
+
           ]),
       );
     }
 
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: Stack(
+      body: ListView(
         children: [
-          backgroundImage(),
-          customShadow(),
-          content()
+          Stack(
+            children: [
+              backgroundImage(),
+              customShadow(),
+              content()
+            ],
+          ),
         ],
       ),
     );
