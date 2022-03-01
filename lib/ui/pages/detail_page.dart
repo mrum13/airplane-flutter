@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
+import 'package:flutter_airplane/ui/widgets/custom_button.dart';
 import 'package:flutter_airplane/ui/widgets/interest_item.dart';
 import 'package:flutter_airplane/ui/widgets/photo_item.dart';
 
@@ -185,18 +186,56 @@ class DetailPage extends StatelessWidget {
               ],
             ),
           ),
+
+          //NOTE: PRICE & BOOK BUTTON
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(vertical: 30),
+            child: Row(
+              children: [
+                //NOTE: PRICE
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('IDR 2.500.000',
+                        style: blackTextStyle.copyWith(
+                          fontSize: 18,
+                          fontWeight: medium
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text('per orang',
+                        style: greyTextStyle.copyWith(
+                          fontWeight: light
+                        ),  
+                      ),
+                    ],
+                  ),
+                ),
+
+                //NOTE: BOOK BUTTON
+                CustomButton(
+                  title: 'Book Now', 
+                  onPressed: () {},
+                  width: 170,
+                )
+              ],
+            ),  
+          )
         ]),
       );
     }
 
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: ListView(
-        children: [
+      body: SingleChildScrollView(
+        child: 
           Stack(
             children: [backgroundImage(), customShadow(), content()],
           ),
-        ],
       ),
     );
   }
