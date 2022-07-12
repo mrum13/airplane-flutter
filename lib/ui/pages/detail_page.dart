@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
+import 'package:flutter_airplane/ui/pages/choose_seat_page.dart';
 import 'package:flutter_airplane/ui/widgets/custom_button.dart';
 import 'package:flutter_airplane/ui/widgets/interest_item.dart';
 import 'package:flutter_airplane/ui/widgets/photo_item.dart';
@@ -153,7 +154,9 @@ class DetailPage extends StatelessWidget {
                 ),
 
                 //Note: Interest
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
                   'Interests',
                   style: blackTextStyle.copyWith(
@@ -172,7 +175,9 @@ class DetailPage extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   children: [
                     InterestItem(
@@ -198,19 +203,17 @@ class DetailPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('IDR 2.500.000',
+                      Text(
+                        'IDR 2.500.000',
                         style: blackTextStyle.copyWith(
-                          fontSize: 18,
-                          fontWeight: medium
-                        ),
+                            fontSize: 18, fontWeight: medium),
                       ),
                       SizedBox(
                         height: 5,
                       ),
-                      Text('per orang',
-                        style: greyTextStyle.copyWith(
-                          fontWeight: light
-                        ),  
+                      Text(
+                        'per orang',
+                        style: greyTextStyle.copyWith(fontWeight: light),
                       ),
                     ],
                   ),
@@ -218,12 +221,18 @@ class DetailPage extends StatelessWidget {
 
                 //NOTE: BOOK BUTTON
                 CustomButton(
-                  title: 'Book Now', 
-                  onPressed: () {},
+                  title: 'Book Now',
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChooseSeatPage(),
+                        ));
+                  },
                   width: 170,
                 )
               ],
-            ),  
+            ),
           )
         ]),
       );
@@ -232,10 +241,9 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: SingleChildScrollView(
-        child: 
-          Stack(
-            children: [backgroundImage(), customShadow(), content()],
-          ),
+        child: Stack(
+          children: [backgroundImage(), customShadow(), content()],
+        ),
       ),
     );
   }
