@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
-import 'package:flutter_airplane/ui/pages/choose_page.dart';
+import 'package:flutter_airplane/ui/pages/checkout_page.dart';
 import 'package:flutter_airplane/ui/widgets/custom_button.dart';
 import 'package:flutter_airplane/ui/widgets/seat_item.dart';
 
