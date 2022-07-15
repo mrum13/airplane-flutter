@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
+import 'package:flutter_airplane/ui/widgets/booking_details_item.dart';
 
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({Key? key}) : super(key: key);
@@ -63,7 +64,7 @@ class CheckoutPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18), color: kWhiteColor),
-        child: Column(children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           //NOTE : DESTINATION TILE
           Row(
             children: [
@@ -117,7 +118,41 @@ class CheckoutPage extends StatelessWidget {
                 ],
               ),
             ],
-          )
+          ),
+
+          //NOTE : BOOKING DETAIL LIST
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            child: Text(
+              'Booking Details',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+          ),
+
+          //NOTE : BOOKING DETAILS ITEM
+          BookingDetailsItem(
+              title: 'Traveler',
+              valueText: '2 person',
+              valueColor: kBlackColor),
+          BookingDetailsItem(
+              title: 'Seat', valueText: 'A3, B3', valueColor: kBlackColor),
+          BookingDetailsItem(
+              title: 'Insurance', valueText: 'YES', valueColor: kGreenColor),
+          BookingDetailsItem(
+              title: 'Refundable', valueText: 'NO', valueColor: kRedColor),
+          BookingDetailsItem(
+              title: 'VAT', valueText: '45%', valueColor: kBlackColor),
+          BookingDetailsItem(
+              title: 'Price',
+              valueText: 'IDR 8.500.690',
+              valueColor: kBlackColor),
+          BookingDetailsItem(
+              title: 'Grand Total',
+              valueText: 'IDR 12.000.000',
+              valueColor: kPrimaryColor),
         ]),
       );
     }
@@ -128,9 +163,7 @@ class CheckoutPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        children: [
-          route(),
-        ],
+        children: [route(), bookingDetails()],
       ),
     );
   }
