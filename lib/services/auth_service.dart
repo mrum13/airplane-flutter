@@ -26,6 +26,8 @@ class AuthService {
       await UserService().setUser(user);
 
       return user;
-    } catch (e) {}
+    } catch (e) {
+      throw e;
+    }
   }
 }
