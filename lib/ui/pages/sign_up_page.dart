@@ -8,23 +8,20 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Widget title() {
       return Container(
         margin: EdgeInsets.only(top: 30),
-        child: Text('Join us and get\nyour next journey',
-        style: blackTextStyle.copyWith(
-          fontSize: 24,
-          fontWeight: semiBold
-        ),),
+        child: Text(
+          'Join us and get\nyour next journey',
+          style: blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
+        ),
       );
     }
 
-    Widget inputSection(){
-
+    Widget inputSection() {
       Widget nameInput() {
         return CustomTextFormField(
-          title: 'Full Name', 
+          title: 'Full Name',
           hintText: 'Your full name',
         );
       }
@@ -38,59 +35,55 @@ class SignUpPage extends StatelessWidget {
 
       Widget passwordInput() {
         return CustomTextFormField(
-          title: 'Password', 
+          title: 'Password',
           hintText: 'Your password',
           obscureText: true,
         );
       }
 
       Widget hobbyInput() {
-        return CustomTextFormField(
-          title: 'Hobby', 
-          hintText: 'Your hobby'
-        );
+        return CustomTextFormField(title: 'Hobby', hintText: 'Your hobby');
       }
 
-      Widget submitButton(){
+      Widget submitButton() {
         return CustomButton(
-          title: 'Get Startded', 
-          onPressed: () {
-            Navigator.pushNamed(context, '/bonus');
-          });
+            title: 'Get Started',
+            onPressed: () {
+              Navigator.pushNamed(context, '/bonus');
+            });
       }
 
       return Container(
         margin: EdgeInsets.only(top: 30),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         decoration: BoxDecoration(
-          color: kWhiteColor,
-          borderRadius: BorderRadius.circular(4)
+            color: kWhiteColor, borderRadius: BorderRadius.circular(4)),
+        child: Column(
+          children: [
+            nameInput(),
+            emailInput(),
+            passwordInput(),
+            hobbyInput(),
+            submitButton(),
+          ],
         ),
-        child: Column(children: [
-          nameInput(),
-          emailInput(),
-          passwordInput(),
-          hobbyInput(),
-          submitButton(),
-        ],),
       );
     }
 
     Widget tacButton() {
       return Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.only(
-          top: 50,
-          bottom: 73,
-        ),
-        child: Text('Tearms and Conditions',
-        style: greyTextStyle.copyWith(
-          fontSize: 16,
-          fontWeight: light,
-          decoration: TextDecoration.underline
-        ),
-        )
-      );
+          alignment: Alignment.center,
+          margin: EdgeInsets.only(
+            top: 50,
+            bottom: 73,
+          ),
+          child: Text(
+            'Tearms and Conditions',
+            style: greyTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: light,
+                decoration: TextDecoration.underline),
+          ));
     }
 
     return Scaffold(
@@ -98,11 +91,7 @@ class SignUpPage extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-          children: [
-            title(),
-            inputSection(),
-            tacButton()
-          ],
+          children: [title(), inputSection(), tacButton()],
         ),
       ),
     );
