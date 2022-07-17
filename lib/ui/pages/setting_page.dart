@@ -25,12 +25,15 @@ class SettingPage extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return Center(
-          child: CustomButton(
-              title: 'Sign Out',
-              onPressed: () {
-                context.read<AuthCubit>().signOut();
-              }),
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 20),
+          child: Center(
+            child: CustomButton(
+                title: 'Sign Out',
+                onPressed: () {
+                  context.read<AuthCubit>().signOut();
+                }),
+          ),
         );
       },
     );
