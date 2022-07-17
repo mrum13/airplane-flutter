@@ -1,58 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_airplane/cubit/auth_cubit.dart';
 import 'package:flutter_airplane/shared/theme.dart';
 import 'package:flutter_airplane/ui/widgets/destination_card.dart';
 import 'package:flutter_airplane/ui/widgets/destination_tile.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     Widget header() {
-      return Container(
-        margin: EdgeInsets.only(left: 24, right: 24, top: 30),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      return BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          if (state is AuthSuccess) {
+            return Container(
+              margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+              child: Row(
                 children: [
-                  Text('Howdy,\nKezia Anne',
-                  style: blackTextStyle.copyWith(
-                    fontSize: 24,
-                    fontWeight: semiBold
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Howdy,\n${state.user.name}',
+                          style: blackTextStyle.copyWith(
+                              fontSize: 24, fontWeight: semiBold),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Text(
+                          'Where to fly today ?',
+                          style: greyTextStyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: light,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 6,),
-                  Text('Where to fly today ?',
-                  style: greyTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: light,
-                  ),),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/image_profile.png'))),
+                  )
                 ],
               ),
-            ),
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image:AssetImage(
-                    'assets/image_profile.png'
-                  ))
-              ),
-            )
-          ],
-        ),
+            );
+          } else {
+            return SizedBox();
+          }
+        },
       );
     }
 
     Widget popularDestinations() {
       return Container(
-        margin: EdgeInsets.only(top:30),
+        margin: EdgeInsets.only(top: 30),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -93,17 +102,14 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget newDestinations(){
+    Widget newDestinations() {
       return Container(
-        margin: EdgeInsets.only(
-          top: 30, 
-          left: 24, 
-          right: 24,
-          bottom: 100),
+        margin: EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 100),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('New This Year', 
+            Text(
+              'New This Year',
               style: blackTextStyle.copyWith(
                 fontSize: 18,
                 fontWeight: semiBold,
@@ -142,7 +148,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       );
-    } 
+    }
 
     return ListView(
       children: [
